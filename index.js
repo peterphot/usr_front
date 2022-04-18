@@ -61,11 +61,11 @@ function checkInteractionVectors() {
     //    this goes to the API
     let trackingObjString = localStorage.getItem('uwEventLogs');
     let bkndUrl = 'https://usr2.onrender.com';
-    $.post(`${bkndUrl}:9000/db/insertEvents`, {obj: trackingObjString}, () => console.log('insert done'));
-    $.post(`${bkndUrl}:9000/db/getFormatCurrentSession`, {obj: trackingObjString}, (data, status) => {
+    $.post(`${bkndUrl}/db/insertEvents`, {obj: trackingObjString}, () => console.log('insert done'));
+    $.post(`${bkndUrl}/db/getFormatCurrentSession`, {obj: trackingObjString}, (data, status) => {
         $("#your_session").text(JSON.stringify(data, undefined, 2));
     });
-    $.post(`${bkndUrl}:9000/db/getMatchingSessions`, {obj: trackingObjString}, (data, status) => {
+    $.post(`${bkndUrl}/db/getMatchingSessions`, {obj: trackingObjString}, (data, status) => {
         console.log('get done');
         $("#match_cnt").text(data.length);
         $("#match_display").text(JSON.stringify(data, undefined, 2));
